@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Trigger Coolify deploy by tag (dev)
         env:
-          COOLIFY_API_TOKEN: ${secrets.COOLIFY_API_TOKEN}
+          COOLIFY_API_TOKEN: 12|lAqXNkPlVGnTt5HPCeXfDuXIYvILgx3ijSWF5tQM60adf2c2
         run: |
           curl -fsS "https://coolify.domlab.uz/api/v1/deploy?tag=dev-deploy&force=false" \
             -H "Authorization: Bearer $COOLIFY_API_TOKEN"
