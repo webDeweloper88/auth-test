@@ -6,11 +6,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: dev # ? ?????: ????? ??????? ?? env "dev"
     steps:
     - name: Trigger Coolify Deploy (dev)
-      env:
-        COOLIFY_WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }} # ? ??? ??? ? ????? env
       run: |
-        echo "POST $COOLIFY_WEBHOOK_URL"
-        curl -fsS -X POST "$COOLIFY_WEBHOOK_URL" -H "Content-Length: 0"
+        curl -fsS -X POST "https://domlab.uz/api/v1/deploy?uuid=u00k4448oo0cs0kgwkck04o0&force=false" -H "Content-Length: 0"
