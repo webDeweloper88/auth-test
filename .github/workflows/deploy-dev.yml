@@ -1,12 +1,26 @@
+# .github/workflows/deploy-dev.yml
 name: Deploy to Dev
+
 on:
   push:
     branches: [ dev ]
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    # ????? ????? ?? ???? self-hosted ??????
+    runs-on: [ self-hosted, Linux, X64 ]
+    timeout-minutes: 10
+
     steps:
     - name: Trigger Coolify Deploy (dev)
       run: |
-        curl -fsS -X POST "https://domlab.uz/api/v1/deploy?uuid=u00k4448oo0cs0kgwkck04o0&force=false" -H "Content-Length: 0"
+        # ?? ?????? ??????: ????????, ??? curl ????
+        if ! command -v curl >/dev/null 2>&1; then
+          sudo apt-get update -y && sudo apt-get install -y curl
+        fi
+
+        # ????????? ?????? ????? ?????? Coolify
+        curl -fsS -X POST \
+          "https://domlab.uz/api/v1/deploy?uuid=u00k4448oo0cs0kgwkck04o0&force=false" \
+          -H "Content-Length: 0" \
+          --retry 5 --retry-connrefused --retry-delay 2
