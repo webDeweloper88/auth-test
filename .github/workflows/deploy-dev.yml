@@ -21,6 +21,6 @@ jobs:
 
         # ????????? ?????? ????? ?????? Coolify
         curl -fsS -X POST \
-          "https://domlab.uz/api/v1/deploy?uuid=u00k4448oo0cs0kgwkck04o0&force=false" \
+          "https://coolify.domlab.uz/api/v1/deploy?uuid=u00k4448oo0cs0kgwkck04o0&force=false" \
           -H "Content-Length: 0" \
           --retry 5 --retry-connrefused --retry-delay 2
